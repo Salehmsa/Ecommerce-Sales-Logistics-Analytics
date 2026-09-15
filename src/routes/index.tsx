@@ -94,7 +94,7 @@ function Dashboard() {
     const cancelled = filteredAllStatus.filter(d => d.Status === "Cancelled").reduce((s, d) => s + d.units, 0);
     const breached = filteredAllStatus.filter(d => d.Breach === 1).reduce((s, d) => s + d.orders, 0);
     return {
-      total, orders, delivered, returned, cancelled,
+      total, orders, delivered, returned, cancelled, breached,
       delRate: total ? delivered / total : 0,
       retRate: total ? returned / total : 0,
       cancRate: total ? cancelled / total : 0,
@@ -277,7 +277,7 @@ function Dashboard() {
           <Kpi label="Delivered" value={fmt(kpis.delivered)} sub={pct(kpis.delRate)} accent="success" />
           <Kpi label="Returned (Leakage)" value={fmt(kpis.returned)} sub={pct(kpis.retRate)} accent="warn" />
           <Kpi label="Cancelled" value={fmt(kpis.cancelled)} sub={pct(kpis.cancRate)} accent="danger" />
-          <Kpi label="SLA Breach Rate" value={pct(kpis.breachRate)} sub={`${fmt(kpis.orders - kpis.delivered)} late orders`} accent="danger" />
+          <Kpi label="SLA Breach Rate" value={pct(kpis.breachRate)} sub={`${fmt(kpis.breached)} late orders`} accent="danger" />
           <Kpi label="On-Time Rate" value={pct(kpis.onTimeRate)} sub="orders within SLA" accent="success" />
         </div>
 
