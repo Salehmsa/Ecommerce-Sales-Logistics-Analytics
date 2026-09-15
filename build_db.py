@@ -8,7 +8,7 @@ import pandas as pd
 import duckdb
 
 # ---------- 1) تحميل البيانات الخام ----------
-sales_raw = pd.read_excel("data/Sales_Data.xlsx").drop(columns=["Unnamed: 1"])
+sales_raw = pd.read_excel("data/Sales Data.xlsx").drop(columns=["Unnamed: 1"])
 sales_raw.columns = [
     "sales_units", "month_no", "month_name", "year",
     "status", "category", "logistics_type", "pincode", "breach", "logistic_partner"
@@ -17,7 +17,7 @@ sales_raw.columns = [
 pincode_raw = pd.read_csv("data/Pincode_mapping.csv", encoding="cp1252")
 pincode_raw.columns = [c.strip() for c in pincode_raw.columns]
 
-bu_raw = pd.read_csv("data/BU_mapping.csv", encoding="utf-8-sig")
+bu_raw = pd.read_csv("data/BU mapping.csv", encoding="utf-8-sig")
 bu_raw.columns = [c.strip() for c in bu_raw.columns]
 
 # ---------- 2) إصلاح جذري: category في Sales Data = business_unit فعلياً ----------
